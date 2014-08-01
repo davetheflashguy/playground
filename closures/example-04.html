@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Closures - Example 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <button id="myButton">Click</button>
+    </body>
+
+    <script>
+
+    (function(){
+    
+        var msg;
+
+        function setMessage(m) {
+            msg = m;
+        }
+
+        function printMessage(){
+            console.log(msg);
+        }
+
+        setMessage('Hello I am a message');
+        printMessage();
+        
+    }());
+    
+    //setMessage("No, I am a message!") // fails because of scope
+    
+    var myClass = (function(){
+        // private to scope
+        var msg;
+
+        // expose public methods
+        return {
+            setMessage: function(m) {
+                msg = m;
+            },
+            printMessage: function (){
+                console.log(msg);
+            }
+        };
+
+    }());
+    
+    myClass.setMessage("No I am a message");
+    myClass.printMessage();
+
+    </script>
+
+</html>
