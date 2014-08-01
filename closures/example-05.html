@@ -1,0 +1,34 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Closures - Example 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <button id="myButton_1">Click</button>
+        <button id="myButton_2">Click</button>
+        <button id="myButton_3">Click</button>
+        <button id="myButton_4">Click</button>
+        <button id="myButton_5">Click</button>
+    </body>
+
+    <script>
+
+    (function(){
+    
+        for (var i = 1; i <= 5; i++) {
+            document.getElementById('myButton_'+i).onclick = function(index){
+                return function() {
+                    console.log("You've selected button #", index)    
+                }
+            }(i);
+        }
+        
+    }());
+
+    </script>
+
+</html>
