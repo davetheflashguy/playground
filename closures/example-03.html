@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Closures - Example 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <button id="myButton">Click</button>
+    </body>
+
+    <script>
+
+    function setUpGlobals(){
+        
+        var num = 666;
+
+        alertNumber = function(){
+            console.log(num);
+        }
+
+        increaseNumber = function(){
+            num ++;
+        }
+
+        decreaseNumber = function(){
+            num --;
+        }
+
+        setNumber = function(n) {
+            num = n;
+        }
+
+    }        
+
+    setUpGlobals(); // nothing..
+    increaseNumber(); // increases number but returns nothing
+    alertNumber(); // prints 667
+    decreaseNumber(); // decreases but returns nothing
+    alertNumber(); // prints 666 since we increased and now decreased
+    setNumber(22); // sets number to 22 but doesn't return anything
+    alertNumber(); // 22?
+
+    var oldAlert = alertNumber; // still 22
+
+    setUpGlobals(); // resets the closure variables
+    alertNumber(); // 666 
+
+    oldAlert(); // 22 because old alert is a pointed to a function
+
+    </script>
+
+</html>
