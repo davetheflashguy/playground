@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Closures - Example 1</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <button id="myButton">Click</button>
+    </body>
+
+    <script>
+    
+    var myClass = (function(){
+        // private to scope
+        var name = 'Dave';
+        var age = 33;
+        var gender = 'MALE';
+        var race = 'WHITE';
+        var weight = 235;
+        var occupation = 'Software Developer';
+
+        // expose public methods
+        return {
+            gainWeight: function(lbs) {
+                weight += lbs;
+            },
+            loseWeight: function(lbs) {
+                weight -= lbs;
+            },
+            getCurrentWeight: function() {
+                return weight;
+            },
+
+        };
+
+    }());
+    
+    var originalWeight = myClass.getCurrentWeight();    
+    
+    // gain 
+    myClass.gainWeight(30);
+
+    console.log(myClass.getCurrentWeight());
+    console.log(originalWeight);
+
+    // lose 
+    myClass.loseWeight(60);
+    console.log(myClass.getCurrentWeight());
+
+    </script>
+
+</html>
